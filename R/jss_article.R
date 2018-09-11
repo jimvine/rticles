@@ -67,7 +67,7 @@ jss_article <- function(..., keep_tex = TRUE, citation_package = 'natbib') {
       collapse = '\n')
   }
   hook_output <- function(x, options) {
-    paste0('\n\\begin{CodeOutput}\n', x, '\\end{CodeOutput}\n')
+    paste0('\n\\begin{CodeOutput}\n', xtable::sanitize(str = x), '\\end{CodeOutput}\n')
   }
 
   base$knitr$knit_hooks <- merge_list(base$knitr$knit_hooks, list(
